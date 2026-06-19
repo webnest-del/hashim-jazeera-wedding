@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1a0e05">
+<title>Hashim & Jazeera – Wedding Invitation</title>
+
+<!-- OG / WhatsApp preview -->
+<meta property="og:title" content="You're Invited 💛 Hashim & Jazeera">
+<meta property="og:description" content="Join us to celebrate our wedding on August 23 at Reem Convention Centre. Tap to open your invitation.">
+<meta property="og:image" content="https://i.imgur.com/placeholder.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8C97A;
+  --gold-shine:#F5E4A0;
+  --deep:#1a0e05;
+  --cream:#FAF6EF;
+  --blush:#F7EDE8;
+  --text:#3a2c1e;
+  --soft:#8a7563;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background:var(--deep);
+  color:var(--cream);
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+img{max-width:100%;display:block}
+
+/* ========== COVER SCREEN ========== */
+#cover{
+  position:fixed;inset:0;z-index:9999;
+  background:radial-gradient(ellipse at 50% 30%, #2d1a08 0%, #0d0603 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:opacity 0.8s ease, transform 0.8s ease;
+  overflow:hidden;
+}
+#cover.open{
+  opacity:0;transform:scale(1.05);pointer-events:none;
+}
+.cover-petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.cover-petal{
+  position:absolute;font-size:1.4rem;opacity:0.18;
+  animation:floatPetal 8s ease-in-out infinite;
+}
+@keyframes floatPetal{
+  0%{transform:translateY(0) rotate(0deg);opacity:0.18}
+  50%{opacity:0.28}
+  100%{transform:translateY(-30px) rotate(20deg);opacity:0.18}
+}
+.cover-logo{
+  width:160px;height:160px;
+  border-radius:50%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 30px rgba(201,168,76,0.6));
+  animation:pulse 3s ease-in-out infinite;
+  margin-bottom:24px;
+}
+@keyframes pulse{
+  0%,100%{filter:drop-shadow(0 0 20px rgba(201,168,76,0.5))}
+  50%{filter:drop-shadow(0 0 45px rgba(232,201,122,0.9))}
+}
+.cover-bismi{
+  font-family:'Great Vibes',cursive;
+  font-size:2.2rem;
+  color:var(--gold-light);
+  margin-bottom:8px;
+  opacity:0.85;
+  text-shadow:0 0 20px rgba(201,168,76,0.5);
+}
+.cover-tagline{
+  font-family:'Montserrat',sans-serif;
+  font-size:0.65rem;
+  letter-spacing:0.35em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:36px;
+  opacity:0.7;
+}
+.cover-tap{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:tapBounce 2s ease-in-out infinite;
+}
+@keyframes tapBounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(6px)}
+}
+.cover-tap-ring{
+  width:56px;height:56px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.cover-tap-ring::before{
+  content:'';position:absolute;inset:-6px;
+  border-radius:50%;border:1px solid rgba(201,168,76,0.3);
+  animation:ringPulse 2s ease-out infinite;
+}
+@keyframes ringPulse{
+  0%{transform:scale(1);opacity:0.5}
+  100%{transform:scale(1.4);opacity:0}
+}
+.cover-tap span{font-size:1.5rem}
+.cover-tap p{
+  font-size:0.6rem;letter-spacing:0.2em;
+  color:var(--gold);text-transform:uppercase;opacity:0.7;
+}
+
+/* ========== MAIN CONTENT ========== */
+#main{opacity:0;transition:opacity 1s ease 0.3s}
+#main.visible{opacity:1}
+
+/* ========== SECTION BASE ========== */
+section{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:60px 24px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ========== HERO SECTION ========== */
+#hero{
+  background:radial-gradient(ellipse at 50% 0%, #2d1a08 0%, #0d0603 70%);
+  text-align:center;gap:20px;
+}
+.hero-ornament{
+  font-size:1.2rem;color:var(--gold);opacity:0.6;
+  letter-spacing:0.5em;
+}
+.hero-couple-names{
+  position:relative;display:inline-block;
+}
+.hero-groom{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,9vw,4.5rem);
+  font-weight:300;
+  line-height:1;
+  color:var(--cream);
+  position:relative;
+  display:inline-block;
+}
+.hero-groom::after{
+  content:'';
+  position:absolute;bottom:-4px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.hero-ampersand{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(3rem,10vw,5.5rem);
+  color:var(--gold-light);
+  display:block;
+  text-shadow:0 0 30px rgba(201,168,76,0.4);
+  line-height:1.1;
+}
+.hero-bride{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,9vw,4.5rem);
+  font-weight:300;
+  line-height:1;
+  color:var(--cream);
+}
+.gold-shine-text{
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-shine) 40%,var(--gold) 60%,var(--gold-light) 80%,var(--gold) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:goldShine 4s linear infinite;
+}
+@keyframes goldShine{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+.hero-logo{
+  width:100px;height:100px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 20px rgba(201,168,76,0.5));
+  margin:8px auto;
+}
+.hero-divider{
+  width:120px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:4px auto;
+}
+.hero-invite-text{
+  font-size:0.65rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--gold);opacity:0.7;
+}
+.scroll-indicator{
+  position:absolute;bottom:30px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  animation:indicatorBounce 2.5s ease-in-out infinite;
+}
+@keyframes indicatorBounce{
+  0%,100%{opacity:0.5;transform:translateY(0)}
+  50%{opacity:1;transform:translateY(8px)}
+}
+.scroll-indicator span{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.6}
+.scroll-arrow{width:20px;height:20px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);transform:rotate(45deg);opacity:0.6}
+
+/* ========== MESSAGE SECTION ========== */
+#message{
+  background:linear-gradient(180deg,#0d0603 0%,#1a0e05 50%,#0d0603 100%);
+  text-align:center;gap:24px;
+}
+.msg-arabic{
+  font-size:1.6rem;
+  color:var(--gold-light);
+  letter-spacing:0.05em;
+  line-height:1.6;
+  opacity:0.85;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+}
+.msg-divider{
+  display:flex;align-items:center;gap:12px;width:100%;max-width:300px;
+}
+.msg-divider::before,.msg-divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.msg-divider::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.msg-diamond{color:var(--gold);font-size:0.8rem}
+.msg-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.05rem,4vw,1.25rem);
+  font-style:italic;
+  font-weight:300;
+  line-height:1.9;
+  color:rgba(250,246,239,0.82);
+  max-width:340px;
+}
+.msg-family{
+  font-size:0.7rem;letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:0.75;
+  line-height:2;
+}
+
+/* ========== COUPLE PHOTO ========== */
+#couple-photo{
+  background:linear-gradient(180deg,#0d0603 0%,#150b04 100%);
+  padding:60px 0;gap:0;
+}
+.photo-frame-wrap{
+  position:relative;
+  width:min(85vw,360px);
+  margin:0 auto;
+}
+.photo-gold-border{
+  position:absolute;inset:-8px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--gold),transparent 40%,transparent 60%,var(--gold));
+  opacity:0.6;
+}
+.photo-gold-corner{
+  position:absolute;width:28px;height:28px;
+  border-color:var(--gold-light);border-style:solid;opacity:0.85;
+}
+.photo-gold-corner.tl{top:-4px;left:-4px;border-width:2px 0 0 2px}
+.photo-gold-corner.tr{top:-4px;right:-4px;border-width:2px 2px 0 0}
+.photo-gold-corner.bl{bottom:-4px;left:-4px;border-width:0 0 2px 2px}
+.photo-gold-corner.br{bottom:-4px;right:-4px;border-width:0 2px 2px 0}
+.couple-img{
+  width:100%;border-radius:8px;
+  object-fit:cover;
+  display:block;
+  position:relative;z-index:1;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+}
+.photo-caption{
+  text-align:center;
+  margin-top:24px;
+  padding:0 24px;
+}
+.photo-caption h3{
+  font-family:'Great Vibes',cursive;
+  font-size:2rem;
+  color:var(--gold-light);
+  text-shadow:0 0 20px rgba(201,168,76,0.3);
+}
+.photo-caption p{
+  font-size:0.65rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--soft);margin-top:6px;
+}
+
+/* ========== DATE REVEAL ========== */
+#date-reveal{
+  background:radial-gradient(ellipse at center,#1f1007 0%,#0a0401 100%);
+  text-align:center;gap:28px;
+}
+.reveal-label{
+  font-size:0.62rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--gold);opacity:0.65;
+}
+.scratch-card{
+  position:relative;
+  width:min(85vw,320px);
+  height:160px;
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:none;
+}
+.scratch-revealed{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#1a0e05,#2d1a08);
+  border:1px solid rgba(201,168,76,0.4);
+  border-radius:12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;
+}
+.scratch-date-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.2rem;
+  font-weight:300;
+  line-height:1;
+  background:linear-gradient(135deg,var(--gold),var(--gold-shine),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.scratch-date-sub{
+  font-size:0.7rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--gold-light);opacity:0.8;
+}
+.scratch-canvas{
+  position:absolute;inset:0;border-radius:12px;
+  touch-action:none;
+}
+.scratch-hint{
+  font-size:0.62rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--soft);
+  animation:hintFade 2s ease-in-out infinite;
+}
+@keyframes hintFade{0%,100%{opacity:0.4}50%{opacity:0.9}}
+
+/* Petals canvas */
+#petals-canvas{
+  position:fixed;inset:0;pointer-events:none;z-index:100;
+  display:none;
+}
+
+/* ========== COUNTDOWN ========== */
+#countdown{
+  background:linear-gradient(180deg,#0a0401 0%,#150b04 100%);
+  text-align:center;gap:28px;
+}
+.countdown-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,5vw,1.8rem);
+  font-style:italic;
+  font-weight:300;
+  color:var(--cream);
+}
+.countdown-grid{
+  display:flex;gap:16px;align-items:flex-start;justify-content:center;
+}
+.countdown-item{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  min-width:64px;
+}
+.countdown-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,10vw,3.5rem);
+  font-weight:600;
+  line-height:1;
+  background:linear-gradient(180deg,var(--gold-shine),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  min-width:64px;text-align:center;
+}
+.countdown-lbl{
+  font-size:0.58rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--soft);
+}
+.countdown-sep{
+  font-size:2.5rem;color:var(--gold);opacity:0.4;
+  margin-top:4px;font-family:'Cormorant Garamond',serif;
+}
+.countdown-date-display{
+  font-size:0.7rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);opacity:0.75;
+}
+
+/* ========== DETAILS SECTION ========== */
+#details{
+  background:linear-gradient(180deg,#150b04 0%,#0d0603 100%);
+  text-align:center;gap:32px;
+}
+.details-heading{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,6vw,2.2rem);
+  font-style:italic;font-weight:300;
+  color:var(--cream);
+}
+.details-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:16px;
+  padding:32px 28px;
+  width:min(90vw,380px);
+  display:flex;flex-direction:column;gap:24px;
+}
+.detail-row{
+  display:flex;align-items:flex-start;gap:16px;text-align:left;
+}
+.detail-icon{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:1px solid rgba(201,168,76,0.4);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:1rem;
+}
+.detail-info{display:flex;flex-direction:column;gap:4px}
+.detail-label{
+  font-size:0.58rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);opacity:0.7;
+}
+.detail-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:300;
+  color:var(--cream);line-height:1.4;
+}
+.map-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;
+  border:1px solid var(--gold);
+  border-radius:50px;
+  color:var(--gold);
+  text-decoration:none;
+  font-size:0.68rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  transition:all 0.3s ease;
+  position:relative;overflow:hidden;
+  background:transparent;
+  width:min(90vw,300px);
+  justify-content:center;
+  margin:0 auto;
+}
+.map-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  opacity:0;transition:opacity 0.3s ease;
+}
+.map-btn:active::before{opacity:0.15}
+.map-btn span{position:relative;z-index:1}
+
+/* ========== MUSIC BUTTON ========== */
+#music-btn{
+  position:fixed;bottom:20px;right:20px;z-index:1000;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(26,14,5,0.85);
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;cursor:pointer;
+  backdrop-filter:blur(8px);
+  box-shadow:0 4px 20px rgba(0,0,0,0.5);
+  transition:all 0.3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+#music-btn:active{transform:scale(0.92)}
+
+/* ========== FOOTER ========== */
+#footer{
+  background:#0a0401;
+  min-height:auto;
+  padding:40px 24px;
+  text-align:center;
+  gap:16px;
+  justify-content:center;
+}
+.footer-logo{
+  width:60px;height:60px;object-fit:contain;
+  opacity:0.7;margin:0 auto;
+  filter:drop-shadow(0 0 8px rgba(201,168,76,0.3));
+}
+.footer-names{
+  font-family:'Great Vibes',cursive;
+  font-size:1.8rem;
+  color:var(--gold-light);
+  opacity:0.8;
+}
+.footer-note{
+  font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--soft);opacity:0.5;
+}
+
+/* ========== SCROLL ANIMATIONS ========== */
+.fade-in-up{
+  opacity:0;transform:translateY(30px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-up.visible{opacity:1;transform:translateY(0)}
+.fade-in{
+  opacity:0;transition:opacity 1s ease;
+}
+.fade-in.visible{opacity:1}
+
+/* ========== AMBIENT PARTICLES ========== */
+.ambient{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.3),transparent);
+  animation:particleDrift 12s ease-in-out infinite;
+}
+@keyframes particleDrift{
+  0%,100%{transform:translate(0,0) scale(1);opacity:0.2}
+  33%{transform:translate(15px,-20px) scale(1.1);opacity:0.4}
+  66%{transform:translate(-10px,10px) scale(0.9);opacity:0.1}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div id="cover" onclick="openInvitation()">
+  <div class="cover-petals" id="coverPetals"></div>
+  
+  <img src="wedding_assets/image_1.png" alt="HJ Monogram" class="cover-logo">
+  <div class="cover-bismi">بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="cover-tagline">Wedding Invitation</div>
+  
+  <div class="cover-tap">
+    <div class="cover-tap-ring"><span>💛</span></div>
+    <p>Tap to open</p>
+  </div>
+</div>
+
+<!-- PETALS CANVAS -->
+<canvas id="petals-canvas"></canvas>
+
+<!-- MUSIC -->
+<div id="music-btn" onclick="toggleMusic()" title="Toggle Music">🎵</div>
+<audio id="bg-music" loop preload="none">
+  <!-- Add your music file URL here -->
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN CONTENT -->
+<div id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="ambient" id="ambientHero"></div>
+    
+    <div class="hero-ornament fade-in-up">✦ &nbsp; &nbsp; ✦ &nbsp; &nbsp; ✦</div>
+    
+    <img src="wedding_assets/image_2.png" alt="HJ Monogram" class="hero-logo fade-in-up">
+    <div class="hero-couple-names fade-in-up">
+
+  <div style="text-align:center; margin-bottom:20px;">
+    <div class="hero-groom gold-shine-text">Hashim TA</div>
+
+    <div style="margin-top:10px; font-size:14px; line-height:1.7; color:#C9A84C(255,255,255,0.8);">
+      Son of Abdul Azeez TK &amp; Shyla Azeez<br>
+      Thekkekara House<br>
+      Pezhakkappilly, Muvattupuzha
+    </div>
+  </div>
+
+  <div class="hero-ampersand">&</div>
+
+  <div style="text-align:center; margin-top:20px;">
+    <div class="hero-bride gold-shine-text">Jazeera PK</div>
+
+    <div style="margin-top:10px; font-size:14px; line-height:1.7; color:#C9A84C(255,255,255,0.8);">
+      Daughter of Kabeer PM &amp; Aisha Kabeer<br>
+      Panickarukudi (Kudilungal)<br>
+      Mudickal P.O, Perumbavoor
+    </div>
+  </div>
+
+</div>
+    
+    <div class="hero-divider fade-in-up"></div>
+    <div class="hero-invite-text fade-in-up">joyfully invite you to their wedding</div>
+    
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- MESSAGE -->
+  <section id="message">
+    <div class="msg-arabic fade-in-up">بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    
+    <div class="msg-divider fade-in-up"><span class="msg-diamond">◆</span></div>
+    
+    <p class="msg-body fade-in-up">
+      With hearts full of love and gratitude to Allah,<br>
+      we joyfully announce the union of two souls.<br><br>
+      Two families, one beautiful beginning.<br>
+      Your presence and blessings would make<br>
+      this moment truly complete.
+    </p>
+    
+    <div class="msg-divider fade-in-up"><span class="msg-diamond">◆</span></div>
+    
+    <div class="msg-family fade-in-up">
+      With love from<br>
+<strong style="color:var(--gold-light)">Both Families</strong>    </div>
+  </section>
+
+  <!-- COUPLE PHOTO -->
+  <section id="couple-photo">
+    <div class="photo-frame-wrap fade-in">
+      <div class="photo-gold-border"></div>
+      <div class="photo-gold-corner tl"></div>
+      <div class="photo-gold-corner tr"></div>
+      <div class="photo-gold-corner bl"></div>
+      <div class="photo-gold-corner br"></div>
+      <img src="wedding_assets/image_3.jpg" alt="Hashim & Jazeera" class="couple-img">
+    </div>
+    <div class="photo-caption">
+      <h3>Hashim &amp; Jazeera</h3>
+      <p>Forever begins August 23, 2026</p>
+    </div>
+  </section>
+
+  <!-- DATE REVEAL -->
+  <section id="date-reveal">
+    <div class="reveal-label fade-in-up">✦ Scratch to reveal the date ✦</div>
+    
+    <div class="scratch-card fade-in-up" id="scratchCard">
+      <div class="scratch-revealed" id="scratchRevealed">
+        <div class="scratch-date-big">23</div>
+        <div class="scratch-date-sub">August 2026</div>
+        <div style="font-size:0.62rem;letter-spacing:0.2em;color:var(--soft);text-transform:uppercase;margin-top:4px;">12:00 PM Onwards</div>
+      </div>
+      <canvas class="scratch-canvas" id="scratchCanvas"></canvas>
+    </div>
+    
+    <div class="scratch-hint fade-in-up" id="scratchHint">☝️ Scratch or tap above</div>
+  </section>
+
+  COUNTDOWN
+  <section id="countdown">
+    <div class="countdown-title fade-in-up">Counting Down to Forever</div>
+    
+    <div class="countdown-grid fade-in-up">
+      <div class="countdown-item">
+        <div class="countdown-num" id="cd-days">00</div>
+        <div class="countdown-lbl">Days</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-item">
+        <div class="countdown-num" id="cd-hours">00</div>
+        <div class="countdown-lbl">Hours</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-item">
+        <div class="countdown-num" id="cd-mins">00</div>
+        <div class="countdown-lbl">Minutes</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-item">
+        <div class="countdown-num" id="cd-secs">00</div>
+        <div class="countdown-lbl">Seconds</div>
+      </div>
+    </div>
+    
+    <div class="countdown-date-display fade-in-up">August 23, 2026 · 12:00 PM</div>
+  </section>
+
+  <!-- DETAILS / VENUE -->
+  <section id="details">
+    <div class="details-heading fade-in-up">Event Details</div>
+    
+    <div class="details-card fade-in-up">
+      <div class="detail-row">
+        <div class="detail-icon">📅</div>
+        <div class="detail-info">
+          <div class="detail-label">Date</div>
+          <div class="detail-value">Saturday, August 23, 2026</div>
+        </div>
+      </div>
+      
+      <div class="detail-row">
+        <div class="detail-icon">⏰</div>
+        <div class="detail-info">
+          <div class="detail-label">Time</div>
+          <div class="detail-value">12:00 PM Onwards</div>
+        </div>
+      </div>
+      
+      <div class="detail-row">
+        <div class="detail-icon">🏛️</div>
+        <div class="detail-info">
+          <div class="detail-label">Venue</div>
+          <div class="detail-value">Reem Convention Centre</div>
+        </div>
+      </div>
+      
+      <div class="detail-row">
+        <div class="detail-icon">📍</div>
+        <div class="detail-info">
+          <div class="detail-label">Location</div>
+          <div class="detail-value">Ernakulam, Kerala</div>
+        </div>
+      </div>
+    </div>
+    
+    <a href="https://www.google.com/maps/place/Reem+Convention+Centre/@10.1185259,76.4417365,17z/data=!3m1!4b1!4m6!3m5!1s0x3b080831005fb557:0x29844304cd0cfe05!8m2!3d10.1185259!4d76.4417365!16s%2Fg%2F11bx44xjpp?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" 
+       target="_blank" class="map-btn fade-in-up">
+      <span>📍</span><span>Open in Google Maps</span>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <section id="footer">
+    <img src="wedding_assets/image_4.png" alt="HJ" class="footer-logo fade-in-up">
+    <div class="footer-names fade-in-up">Hashim &amp; Jazeera</div>
+    <div class="footer-note fade-in-up">August 23, 2026 · Reem Convention Centre</div>
+    <div class="footer-note fade-in-up" style="margin-top:8px">Made with love 💛</div>
+  </section>
+
+</div><!-- /main -->
+
+<script>
+// ========== CONFIG ==========
+const WEDDING_DATE = new Date('2026-08-23T12:00:00');
+
+// ========== COVER PETALS ==========
+(function(){
+  const container = document.getElementById('coverPetals');
+  const symbols = ['🌸','🌺','✿','❀','🌼','🌷'];
+  for(let i=0;i<18;i++){
+    const el = document.createElement('span');
+    el.className='cover-petal';
+    el.textContent = symbols[i%symbols.length];
+    el.style.left = (Math.random()*100)+'%';
+    el.style.top = (Math.random()*100)+'%';
+    el.style.animationDelay = (Math.random()*8)+'s';
+    el.style.animationDuration = (6+Math.random()*6)+'s';
+    el.style.fontSize = (0.8+Math.random()*0.8)+'rem';
+    container.appendChild(el);
+  }
+})();
+
+// ========== OPEN INVITATION ==========
+function openInvitation(){
+  const cover = document.getElementById('cover');
+  const main = document.getElementById('main');
+  cover.classList.add('open');
+  setTimeout(()=>{
+    cover.style.display='none';
+    main.classList.add('visible');
+    tryAutoplay();
+  },800);
+}
+
+// ========== AMBIENT PARTICLES ==========
+(function(){
+  const container = document.getElementById('ambientHero');
+  for(let i=0;i<8;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=(30+Math.random()*60)+'px';
+    p.style.cssText=`width:${size};height:${size};left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*12}s;animation-duration:${10+Math.random()*8}s`;
+    container.appendChild(p);
+  }
+})();
+
+// ========== SCROLL ANIMATIONS ==========
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.fade-in-up,.fade-in').forEach(el=>observer.observe(el));
+
+// ========== COUNTDOWN ==========
+function updateCountdown(){
+  const now = new Date();
+  const diff = WEDDING_DATE - now;
+  if(diff<=0){
+    document.getElementById('cd-days').textContent='00';
+    document.getElementById('cd-hours').textContent='00';
+    document.getElementById('cd-mins').textContent='00';
+    document.getElementById('cd-secs').textContent='00';
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+// ========== SCRATCH CARD ==========
+(function(){
+  const card = document.getElementById('scratchCard');
+  const canvas = document.getElementById('scratchCanvas');
+  const ctx = canvas.getContext('2d');
+  const hint = document.getElementById('scratchHint');
+  let scratching=false, revealed=false, totalPixels=0, scratchedPixels=0;
+  let lastX=0,lastY=0;
+
+  function initCanvas(){
+    const rect = card.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    // Gold-ish scratch surface
+    const grad = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+    grad.addColorStop(0,'#B8882A');
+    grad.addColorStop(0.3,'#E8C97A');
+    grad.addColorStop(0.6,'#C9A84C');
+    grad.addColorStop(1,'#A07030');
+    ctx.fillStyle=grad;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    
+    // Pattern overlay
+    ctx.globalAlpha=0.15;
+    for(let i=0;i<canvas.width;i+=20){
+      for(let j=0;j<canvas.height;j+=20){
+        ctx.fillStyle='#fff';
+        ctx.fillText('✦',i,j);
+      }
+    }
+    ctx.globalAlpha=1;
+    
+    // Center text
+    ctx.fillStyle='rgba(26,14,5,0.7)';
+    ctx.font='bold 14px Montserrat,sans-serif';
+    ctx.textAlign='center';
+    ctx.letterSpacing='4px';
+    ctx.fillText('SCRATCH TO REVEAL',canvas.width/2,canvas.height/2-8);
+    ctx.font='11px Montserrat,sans-serif';
+    ctx.fillText('THE DATE ✦',canvas.width/2,canvas.height/2+14);
+    
+    totalPixels = canvas.width*canvas.height;
+    ctx.globalCompositeOperation='destination-out';
+  }
+
+  function scratch(x,y){
+    ctx.beginPath();
+    ctx.arc(x,y,28,0,Math.PI*2);
+    ctx.fill();
+    
+    // Check reveal threshold
+    const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+    let cleared=0;
+    for(let i=3;i<data.length;i+=4)if(data[i]<128)cleared++;
+    if(cleared/totalPixels>0.45 && !revealed){
+      revealed=true;
+      triggerReveal();
+    }
+  }
+
+  function getPos(e){
+    const r=canvas.getBoundingClientRect();
+    if(e.touches){
+      return{x:e.touches[0].clientX-r.left,y:e.touches[0].clientY-r.top};
+    }
+    return{x:e.clientX-r.left,y:e.clientY-r.top};
+  }
+
+  canvas.addEventListener('mousedown',e=>{scratching=true;const p=getPos(e);lastX=p.x;lastY=p.y;scratch(p.x,p.y)});
+  canvas.addEventListener('mousemove',e=>{if(!scratching)return;const p=getPos(e);scratch(p.x,p.y);lastX=p.x;lastY=p.y});
+  canvas.addEventListener('mouseup',()=>scratching=false);
+  canvas.addEventListener('touchstart',e=>{e.preventDefault();scratching=true;const p=getPos(e);scratch(p.x,p.y)},{passive:false});
+  canvas.addEventListener('touchmove',e=>{e.preventDefault();if(!scratching)return;const p=getPos(e);scratch(p.x,p.y)},{passive:false});
+  canvas.addEventListener('touchend',()=>scratching=false);
+
+  // Init after slight delay (ensure layout)
+  setTimeout(initCanvas,300);
+})();
+
+function triggerReveal(){
+  const canvas = document.getElementById('scratchCanvas');
+  const hint = document.getElementById('scratchHint');
+  // Fade out canvas
+  canvas.style.transition='opacity 0.6s ease';
+  canvas.style.opacity='0';
+  hint.textContent='✨ Save the date!';
+  hint.style.color='var(--gold-light)';
+  
+  // Launch petals
+  launchPetals();
+}
+
+// ========== PETAL BURST ==========
+function launchPetals(){
+  const c = document.getElementById('petals-canvas');
+  c.style.display='block';
+  const ctx=c.getContext('2d');
+  c.width=window.innerWidth;
+  c.height=window.innerHeight;
+  
+  const petals=[];
+  const emojis=['🌸','🌺','🌼','🌷','✿','❀','💛','🌹'];
+  
+  for(let i=0;i<60;i++){
+    petals.push({
+      x:c.width/2+(Math.random()-0.5)*200,
+      y:c.height*0.6,
+      vx:(Math.random()-0.5)*6,
+      vy:-(Math.random()*8+4),
+      rot:Math.random()*360,
+      rotV:(Math.random()-0.5)*6,
+      emoji:emojis[Math.floor(Math.random()*emojis.length)],
+      size:16+Math.random()*16,
+      life:1,
+      decay:0.008+Math.random()*0.01
+    });
+  }
+  
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    let alive=false;
+    petals.forEach(p=>{
+      if(p.life<=0)return;
+      alive=true;
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.18;
+      p.rot+=p.rotV; p.life-=p.decay;
+      ctx.save();
+      ctx.globalAlpha=p.life;
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot*Math.PI/180);
+      ctx.font=p.size+'px serif';
+      ctx.textAlign='center';
+      ctx.fillText(p.emoji,0,0);
+      ctx.restore();
+    });
+    if(alive)requestAnimationFrame(draw);
+    else c.style.display='none';
+  }
+  draw();
+}
+
+// ========== MUSIC ==========
+let musicPlaying = false;
+function tryAutoplay(){
+  const audio=document.getElementById('bg-music');
+  audio.volume=0.3;
+  audio.play().then(()=>{
+    musicPlaying=true;
+    document.getElementById('music-btn').textContent='🎵';
+  }).catch(()=>{});
+}
+function toggleMusic(){
+  const audio=document.getElementById('bg-music');
+  const btn=document.getElementById('music-btn');
+  if(musicPlaying){audio.pause();btn.textContent='🔇';musicPlaying=false;}
+  else{audio.play();btn.textContent='🎵';musicPlaying=true;}
+}
+</script>
+</body>
+</html>
